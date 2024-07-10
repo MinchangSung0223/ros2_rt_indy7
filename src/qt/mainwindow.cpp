@@ -84,7 +84,7 @@ void MainWindow::RealtimeDataSlot()
                 case JOINT_POS: ui->widget_RealTimeGraph->graph(j)->addData(key, info.act.q[j]);break;
                 case JOINT_VEL: ui->widget_RealTimeGraph->graph(j)->addData(key, info.act.q_dot[j]);break;
                 case JOINT_TORQ: ui->widget_RealTimeGraph->graph(j)->addData(key, info.act.tau[j]);break;
-                case EXT_WRENCH: if(j<6){ui->widget_RealTimeGraph->graph(j)->addData(key, info.F_sensor[j]);break;}
+                case EXT_WRENCH: if(j<6){ui->widget_RealTimeGraph->graph(j)->addData(key, info.act.F[j]);break;}
             }
         }
             

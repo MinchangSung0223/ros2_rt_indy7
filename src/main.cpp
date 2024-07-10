@@ -35,11 +35,15 @@ private:
         sensor_msgs::msg::JointState joint_state;
         joint_state.name = {"joint0", "joint1", "joint2", "joint3", "joint4", "joint5"};
         joint_state.position.resize(6);
+        joint_state.velocity.resize(6);
+        joint_state.effort.resize(6);
 
         while (rclcpp::ok())
         {
             for (size_t i = 0; i < joint_state.position.size(); ++i) {
                 joint_state.position[i] = info.act.q(i);
+                joint_state.velocity[i] = info.act.q_dot(i);
+                joint_state.effort[i] = info.des.tau(i);
             }
 
             joint_state.header.stamp = node->now();

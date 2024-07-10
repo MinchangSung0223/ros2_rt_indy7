@@ -138,7 +138,7 @@ find_package(LR REQUIRED)
 find_package(ompl REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Bullet REQUIRED)
-#find_package(urdfdom REQUIRED)
+find_package(urdfdom REQUIRED)
 find_package(Threads REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(ruckig REQUIRED)
@@ -153,6 +153,7 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(pluginlib REQUIRED)
+find_package(rmw_cyclonedds_cpp REQUIRED)  # 이 줄을 추가합니다
 
 
 
@@ -493,13 +494,10 @@ ament_target_dependencies(rt_node
 "sensor_msgs"
 "geometry_msgs"
 "nav_msgs" 
-"rmw_cyclonedds_cpp" )
-target_link_libraries(rt_node         
-/opt/ros/galactic/lib/x86_64-linux-gnu/libddsc.so.0
-/opt/ros/galactic/lib/libiceoryx_binding_c.so
-/opt/ros/galactic/lib/libiceoryx_posh.so
-/opt/ros/galactic/lib/libiceoryx_utils.so
-/opt/ros/galactic/lib/libiceoryx_platform.so
+"rmw_cyclonedds_cpp" 
+)
+target_link_libraries(rt_node     
+/opt/ros/foxy/lib/x86_64-linux-gnu/libddsc.so.0
 )
 install(TARGETS rt_node
   DESTINATION lib/${PROJECT_NAME})
